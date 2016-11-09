@@ -54,19 +54,22 @@ val TS.ParameterDeclaration.isVararg: Boolean get() = dotDotDotToken != null
 
 fun TS.ParameterDeclaration.toKotlinParam(typeMapper: ObjectTypeToKotlinTypeMapper): FunParam {
     val nodeType: TS.TypeNode? = getNodeTypeConsideringVararg()
-    val typeName = nodeType?.toKotlinType(typeMapper) ?: Type(ANY)
-    return toKotlinParam(nodeType, typeName)
+    val isNullable = questionToken != null
+    val isLambda = nodeType?.kind === TS.SyntaxKind.FunctionType
+    val type = (nodeType?.toKotlinType(typeMapper) ?: Type(ANY)).copy(isNullable = isNullable, isLambda = isLambda)
+    return toKotlinParam(type)
 }
 
 fun TS.ParameterDeclaration.toKotlinParamOverloads(typeMapper: ObjectTypeToKotlinTypeMapper): List<FunParam> {
     val nodeType: TS.TypeNode? = getNodeTypeConsideringVararg()
+    val isNullable = questionToken != null
+    val isLambda = nodeType?.kind === TS.SyntaxKind.FunctionType
     return (nodeType?.toKotlinTypeOverloads(typeMapper) ?: listOf(Type(ANY))).map { type ->
-        toKotlinParam(nodeType, type)
+        toKotlinParam(type.copy(isNullable = isNullable, isLambda = isLambda))
     }
 }
 
-private fun TS.ParameterDeclaration.toKotlinParam(nodeType: TS.TypeNode?, type: Type): FunParam {
-    val isLambda = nodeType?.kind === TS.SyntaxKind.FunctionType
+private fun TS.ParameterDeclaration.toKotlinParam(type: Type): FunParam {
     val name = declarationName!!.unescapedText
     val defaultValue = initializer?.let {
         when (it.kind) {
@@ -77,12 +80,11 @@ private fun TS.ParameterDeclaration.toKotlinParam(nodeType: TS.TypeNode?, type: 
             else -> unsupportedNode(it)
         }
     }
-    val isNullable = questionToken != null
     val isVar = hasFlag(flags, TS.NodeFlags.AccessibilityModifier)
 
     return FunParam(name,
-            TypeAnnotation(type.copy(isNullable = isNullable, isLambda = isLambda), isVararg = isVararg),
-            if (defaultValue == null && isNullable) "null" else defaultValue,
+            TypeAnnotation(type, isVararg = isVararg),
+            if (defaultValue == null && type.isNullable) "null" else defaultValue,
             isVar)
 }
 
