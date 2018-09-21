@@ -77,6 +77,7 @@ tasks {
     val compileTestKotlin2Js by getting(Kotlin2JsCompile::class) {
         kotlinOptions.moduleKind = "commonjs"
         kotlinOptions.outputFile = "$projectDir/out/test/classes/ts2kt.test.js"
+        source("src/test/kotlin")
         kotlinOptions.sourceMap = true
         dependsOn(extractTestJsLibs)
     }
