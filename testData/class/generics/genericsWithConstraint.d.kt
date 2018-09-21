@@ -17,10 +17,12 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external open class Foo<T : Bar> {
+external interface Bar
+external interface Baz
+external open class FooWithConstraint<T : Bar> {
     open var varT: T = definedExternally
     open fun withoutArgumentsReturnsT(): T = definedExternally
     open fun withOneT(a: T): T = definedExternally
     open fun <B : Baz> returnsB(a: Any): B = definedExternally
-    open fun <A : T, B : B> withManyArguments(a: A, b: B): T = definedExternally
+    open fun <A : T, B : Baz> withManyArguments(a: A, b: B): T = definedExternally
 }

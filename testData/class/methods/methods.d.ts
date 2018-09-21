@@ -1,3 +1,5 @@
+declare interface Bar
+
 declare class Foo {
     methodWithOutArgs();
     methodWithString(s: string): string;

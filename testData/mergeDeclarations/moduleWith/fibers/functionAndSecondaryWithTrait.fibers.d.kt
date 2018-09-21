@@ -18,10 +18,15 @@ import org.w3c.workers.*
 import org.w3c.xhr.*
 
 @JsModule("fibers")
-external interface Fiber {
+external interface FiberWithTrait {
     var reset: () -> Any
     var run: (param: Any? /*= null*/) -> Any
     var throwInto: (ex: Any) -> Any
+
+    companion object {
+        var current: FiberWithTrait = definedExternally
+        fun yield(value: Any? = definedExternally /* null */): Any = definedExternally
+    }
 }
 
-external fun Fiber(fn: Function<*>): Fiber = definedExternally
+external fun FiberWithTrait(fn: Function<*>): FiberWithTrait = definedExternally

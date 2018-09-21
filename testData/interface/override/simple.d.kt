@@ -20,7 +20,7 @@ import org.w3c.xhr.*
 external interface Foo {
     fun bar()
     fun bar(a: Number)
-    var baz: Any
+    var baz: dynamic
 }
 external interface Boo : Foo {
     override fun bar()

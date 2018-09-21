@@ -8,5 +8,5 @@ declare class Boo extends Foo {
     bar();
     bar(a:number);
     bar(a: string);
-    baz: number
+    baz: any
 }

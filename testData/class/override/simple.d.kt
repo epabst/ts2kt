@@ -26,5 +26,5 @@ external open class Boo : Foo {
     override fun bar(): Unit = definedExternally
     override fun bar(a: Number): Unit = definedExternally
     open fun bar(a: String): Unit = definedExternally
-    override var baz: Number = definedExternally
+    override var baz: Any = definedExternally
 }

@@ -17,7 +17,8 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external open class Foo {
+external interface Bar
+external open class FooWithMethods {
     companion object {
         fun methodWithOutArgs(): Unit = definedExternally
         fun methodWithString(s: String): String = definedExternally

@@ -1,4 +1,4 @@
 declare class Foo {
-    [n: number]: Bar;
-    [s: string]: string;
+    [n: number]: string;
+    [s: string]: number;
 }

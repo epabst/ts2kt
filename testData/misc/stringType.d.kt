@@ -17,13 +17,10 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external fun foo(s: String /* "number" */): Number = definedExternally
-external fun foo(s: String /* "string" */): String = definedExternally
+external fun foo(s: String /* "number" | "string" */): dynamic = definedExternally
 external interface InterfaceWithStringTypes {
-    fun bar(s: String /* "number" */): Number
-    fun bar(s: String /* "string" */): String
+    fun bar(s: String /* "number" | "string" */): dynamic
 }
 external open class ClassWithStringTypes {
-    open fun baz(s: String /* "number" */): Number = definedExternally
-    open fun baz(s: String /* "string" */): String = definedExternally
+    open fun baz(s: String /* "number" | "string" */): dynamic = definedExternally
 }

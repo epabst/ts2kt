@@ -20,6 +20,8 @@ import org.w3c.xhr.*
 external interface ISyntaxElement {
     fun kind(): SyntaxKind
 }
+external interface SyntaxKind
+external interface ISyntaxNodeOrToken
 external interface ISyntaxList : ISyntaxElement {
     fun childAt(index: Number): ISyntaxNodeOrToken
     fun toArray(): Array<ISyntaxNodeOrToken>

@@ -1,5 +1,5 @@
 declare class ExpectedOverrides {
-    equals(a: any);
+    equals(a: any | undefined): boolean;
     hashCode(): number;
     toString(): String;
 }

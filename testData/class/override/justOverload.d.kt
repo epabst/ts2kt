@@ -17,9 +17,9 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external open class Foo {
+external open class FooForOverload {
     open fun bar(a: Number): Unit = definedExternally
 }
-external open class Boo : Foo {
+external open class BooForOverload : FooForOverload {
     open fun bar(a: String): Unit = definedExternally
 }

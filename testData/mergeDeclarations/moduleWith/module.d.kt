@@ -17,6 +17,7 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
+external interface IBase
 external interface IAbstractComponent : mergeDeclarations.moduleWith.Ext.IBase, mergeDeclarations.moduleWith.Ext.util.IPositionable, mergeDeclarations.moduleWith.Ext.util.IObservable, mergeDeclarations.moduleWith.Ext.util.IAnimate, mergeDeclarations.moduleWith.Ext.util.IElementContainer, mergeDeclarations.moduleWith.Ext.util.IRenderable, mergeDeclarations.moduleWith.Ext.state.IStateful {
     var autoEl: Any
     var autoLoad: Any? get() = definedExternally; set(value) = definedExternally

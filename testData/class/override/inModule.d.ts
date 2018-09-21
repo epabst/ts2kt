@@ -1,4 +1,8 @@
 declare module TypeScript.Syntax {
+    interface ISyntaxList
+    interface ISyntaxToken
+    interface SourceUnitSyntax
+
     interface IFactory {
         sourceUnit(moduleElements: ISyntaxList, endOfFileToken: ISyntaxToken): SourceUnitSyntax;
     }

@@ -18,12 +18,12 @@ import org.w3c.workers.*
 import org.w3c.xhr.*
 
 external interface ExpectedOverrides {
-    override fun equals(a: Any)
-    override fun hashCode(): Number
+    override fun equals(a: Any?)
+    override fun hashCode(): Int
     override fun toString(): String
 }
 external interface ExpectedOverrides2 {
-    override fun equals(a: Any)
+    override fun equals(a: Any?)
 }
 external interface ExpectedNoOverrides {
     fun equals()

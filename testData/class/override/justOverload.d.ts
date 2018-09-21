@@ -1,7 +1,7 @@
-declare class Foo {
+declare class FooForOverload {
     bar(a:number);
 }
 
-declare class Boo extends Foo {
+declare class BooForOverload extends FooForOverload {
     bar(a: string);
 }

@@ -17,6 +17,10 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
+import org.w3c.dom.Document
+import org.w3c.dom.Element
+import org.w3c.dom.HTMLElement
+
 external interface MyXHR
 external interface MyQuery
 external interface MyEvent

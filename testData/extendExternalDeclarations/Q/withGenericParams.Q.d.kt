@@ -1,5 +1,4 @@
 @file:Suppress("INTERFACE_WITH_SUPERCLASS", "OVERRIDING_FINAL_MEMBER", "RETURN_TYPE_MISMATCH_ON_OVERRIDE", "CONFLICTING_OVERLOADS", "EXTERNAL_DELEGATION", "NESTED_CLASS_IN_EXTERNAL_INTERFACE")
-@file:JsQualifier("Q")
 package extendExternalDeclarations.Q
 
 import kotlin.js.*
@@ -17,6 +16,6 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external fun <T, B> Promise<T>.foo(b: B): T = definedExternally
-external fun <T0, T, B> Promise<T0>.foo(a: Any, b: B): T = definedExternally
-external var <T> Promise<T>.bar: Array<T> get() = definedExternally; set(value) = definedExternally
+fun <T, B> Promise<T>.foo(b: B): T = this.asDynamic().foo(b)
+fun <T0, T, B> Promise<T0>.foo(a: Any, b: B): T = this.asDynamic().foo(a, b)
+var <T> Promise<T>.bar: Array<T> get() = this.asDynamic().bar; set(value) { this.asDynamic().bar = value }

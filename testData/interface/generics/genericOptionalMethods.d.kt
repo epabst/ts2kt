@@ -20,6 +20,6 @@ import org.w3c.xhr.*
 external interface Bar
 external interface FooOptionalMethods<T> {
     val methodWithOutArgs: (() -> Unit)? get() = definedExternally
-    val <A> methodWithString: ((s: A) -> T)? get() = definedExternally
-    val <A : T, B> methodWithManyArgs: ((n: A, settings: Bar) -> B)? get() = definedExternally
+    fun <A> methodWithString(s: A): T
+    fun <A : T, B> methodWithManyArgs(n: A, settings: Bar): B
 }

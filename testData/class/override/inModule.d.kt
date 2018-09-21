@@ -17,6 +17,9 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
+external interface ISyntaxList
+external interface ISyntaxToken
+external interface SourceUnitSyntax
 external interface IFactory {
     fun sourceUnit(moduleElements: ISyntaxList, endOfFileToken: ISyntaxToken): SourceUnitSyntax
 }

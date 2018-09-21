@@ -19,11 +19,11 @@ import org.w3c.xhr.*
 
 external open class Foo {
     @nativeGetter
-    open operator fun get(n: Number): Bar? = definedExternally
+    open operator fun get(n: Number): String? = definedExternally
     @nativeSetter
-    open operator fun set(n: Number, value: Bar): Unit = definedExternally
+    open operator fun set(n: Number, value: String): Unit = definedExternally
     @nativeGetter
-    open operator fun get(s: String): String? = definedExternally
+    open operator fun get(s: String): Number? = definedExternally
     @nativeSetter
-    open operator fun set(s: String, value: String): Unit = definedExternally
+    open operator fun set(s: String, value: Number): Unit = definedExternally
 }

@@ -17,6 +17,6 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external open class SampleView : module.exportAssignment._atom.ScrollView {
+external open class SampleView {
     open var foo: String = definedExternally
 }

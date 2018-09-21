@@ -17,11 +17,11 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external open class Foo {
+external open class FooWithDefaultArgs {
     open fun bar(a: Number = definedExternally /* 1 */): Unit = definedExternally
     open fun baz(a: Any? = definedExternally /* null */): Unit = definedExternally
 }
-external open class Boo : Foo {
+external open class BooWithDefaultArgs : FooWithDefaultArgs {
     override fun bar(a: Number): Unit = definedExternally
     override fun baz(a: Any?): Unit = definedExternally
 }

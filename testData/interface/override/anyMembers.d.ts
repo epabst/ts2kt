@@ -1,5 +1,5 @@
 interface ExpectedOverrides {
-    equals(a: any);
+    equals(a: any | undefined);
     hashCode(): number;
     toString(): String;
 }

@@ -18,5 +18,8 @@ import org.w3c.workers.*
 import org.w3c.xhr.*
 
 external open class EmptySyntaxList : `class`.override.TypeScript.ISyntaxList {
-    override fun kind(): SyntaxKind = definedExternally
+    override fun kind(): `class`.override.TypeScript.SyntaxKind = definedExternally
+    override fun childAt(index: Number): `class`.override.TypeScript.ISyntaxNodeOrToken = definedExternally
+    override fun toArray(): Array<`class`.override.TypeScript.ISyntaxNodeOrToken> = definedExternally
+    override fun insertChildrenInto(array: Array<`class`.override.TypeScript.ISyntaxElement>, index: Number): Unit = definedExternally
 }

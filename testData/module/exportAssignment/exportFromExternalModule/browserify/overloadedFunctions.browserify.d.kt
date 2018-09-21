@@ -17,6 +17,9 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
+import module.exportAssignment.exportFromExternalModule.BrowserifyObject
+import module.exportAssignment.exportFromExternalModule.Options
+
 @JsModule("browserify")
 external fun browserify(): BrowserifyObject = definedExternally
 @JsModule("browserify")

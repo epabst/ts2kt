@@ -10,6 +10,7 @@ declare module Ext {
     namespace state {
         export interface IStateful
     }
+    export interface IBase
     export interface IAbstractComponent extends Ext.IBase,Ext.util.IPositionable,Ext.util.IObservable,Ext.util.IAnimate,Ext.util.IElementContainer,Ext.util.IRenderable,Ext.state.IStateful {
         autoEl;
         autoLoad?: any;

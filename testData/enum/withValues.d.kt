@@ -17,7 +17,7 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external enum class SomeEnum {
+external enum class SomeEnumWithValues {
     Foo /* = 1 */,
     Bar,
     `$` /* = 2 */,

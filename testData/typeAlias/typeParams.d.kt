@@ -31,4 +31,4 @@ external fun getHeaders(): Map1<String, List1<String>> = definedExternally
 external fun addHeaders(headers: Map1<String, List1<String>>): Unit = definedExternally
 external var someRef: dynamic /* String | (instance: T) -> Any */ = definedExternally
 external fun addRef(ref: String): Unit = definedExternally
-external fun addRef(ref: (instance: T) -> Any): Unit = definedExternally
+external fun addRef(ref: (instance: Number) -> Any): Unit = definedExternally

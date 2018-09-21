@@ -1,5 +1,8 @@
 // based on lodash.d.ts
 declare module _ {
+    interface LoDashWrapper<T>
+    interface LoDashArrayWrapper<T>
+
     interface LoDashStatic {
         /**
          * Creates a lodash object that wraps the given value with explicit method chaining enabled.

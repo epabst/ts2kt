@@ -1,4 +1,4 @@
-declare class Foo {
+declare class FooWithVariables {
     static varAsAny: any;
     static varAsNumber: number;
     static varAsBoolean: boolean;

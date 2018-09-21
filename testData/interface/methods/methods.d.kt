@@ -18,6 +18,7 @@ import org.w3c.workers.*
 import org.w3c.xhr.*
 
 external interface Foo {
+    fun `new`(n: Number): `interface`.methods.foo.Bar
     fun methodWithOutArgs()
     fun methodWithString(s: String): String
     fun methodWithManyArgs(n: Number, settings: `interface`.methods.foo.Bar): Boolean

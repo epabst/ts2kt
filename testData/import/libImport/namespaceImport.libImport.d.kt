@@ -1,6 +1,6 @@
 @file:Suppress("INTERFACE_WITH_SUPERCLASS", "OVERRIDING_FINAL_MEMBER", "RETURN_TYPE_MISMATCH_ON_OVERRIDE", "CONFLICTING_OVERLOADS", "EXTERNAL_DELEGATION", "NESTED_CLASS_IN_EXTERNAL_INTERFACE")
-@file:JsQualifier("lib2")
-package import.lib2
+@file:JsQualifier("libImport")
+package import.libImport
 
 import kotlin.js.*
 import kotlin.js.Json
@@ -17,4 +17,6 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external fun foo(): import.lib1.I = definedExternally
+external interface I {
+    var x: String
+}

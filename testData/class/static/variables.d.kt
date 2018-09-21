@@ -17,7 +17,7 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external open class Foo {
+external open class FooWithVariables {
     companion object {
         var varAsAny: Any = definedExternally
         var varAsNumber: Number = definedExternally

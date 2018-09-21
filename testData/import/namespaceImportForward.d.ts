@@ -1,11 +1,11 @@
-declare namespace lib1 {
+declare namespace libImportForward {
     interface I {
         x: String
     }
 }
 
-declare namespace lib2 {
+declare namespace libImportForward2 {
     function foo(): q.I
 
-    import q = lib1
+    import q = libImportForward
 }

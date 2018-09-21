@@ -1,9 +1,9 @@
-declare class Foo {
+declare class FooWithDefaultArgs {
     bar(a: number = 1);
     baz(a?);
 }
 
-declare class Boo extends Foo {
+declare class BooWithDefaultArgs extends FooWithDefaultArgs {
     bar(a: number = 1);
     baz(a?);
 }

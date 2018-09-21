@@ -17,6 +17,9 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
+external interface LoDashWrapper<T>
+external interface LoDashArrayWrapper<T>
+
 external interface LoDashStatic {
     fun chain(value: Number): LoDashWrapper<Number>
     fun chain(value: String): LoDashWrapper<String>
