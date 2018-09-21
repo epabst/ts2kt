@@ -55,7 +55,7 @@ class TypeScriptToKotlin(
 
     override val hasMembersOpenModifier = false
 
-    fun getAdditionalAnnotations(node: Node): List<KtAnnotation> {
+    private fun getAdditionalAnnotations(node: Node): List<KtAnnotation> {
         val isShouldSkip = requiredModifier === SyntaxKind.DeclareKeyword && !(node.modifiers?.arr?.any { it.kind === requiredModifier } ?: false )
         if (isShouldSkip) return DEFAULT_FAKE_ANNOTATION
 
@@ -192,9 +192,9 @@ class TypeScriptToKotlin(
 
         fun getName(node: ModuleDeclaration): String {
             val declarationName = node.declarationName!!
-            return when(declarationName.kind as Any) {
-                SyntaxKind.Identifier -> (node.declarationName as Identifier).unescapedText
-                SyntaxKind.StringLiteral -> (node.declarationName as Identifier).unescapedText.replace('/', '.')
+            return when(declarationName.kind) {
+                SyntaxKind.Identifier -> node.declarationName.unsafeCast<Identifier>().unescapedText
+                SyntaxKind.StringLiteral -> node.declarationName.unsafeCast<Identifier>().unescapedText.replace('/', '.')
 
                 else -> {
                     reportUnsupportedNode(declarationName)

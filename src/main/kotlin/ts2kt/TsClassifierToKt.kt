@@ -16,7 +16,7 @@ abstract class TsClassifierToKt(
     var parents = arrayListOf<KtHeritageType>()
 
     override fun visitHeritageClause(node: HeritageClause) {
-        val types = node.types?.arr?.map { id -> KtHeritageType(typeMapper.mapType(id)) } ?: listOf()
+        val types = node.types.arr.map { id -> KtHeritageType(typeMapper.mapType(id)) }
         parents.addAll(types)
     }
 
@@ -60,8 +60,8 @@ abstract class TsClassifierToKt(
 
     ///???
     // TODO should be abstract? is static declarations inside (TS) interfaces allowed?
-    fun getTranslator(node: ClassElement): TsClassifierToKt {
-        if (node.modifiers?.arr?.any { it.kind === SyntaxKind.StaticKeyword } ?: false) {
+    private fun getTranslator(node: ClassElement): TsClassifierToKt {
+        if (node.modifiers?.arr?.any { it.kind === SyntaxKind.StaticKeyword } == true) {
             if (staticTranslator == null) {
                 // TODO support override for static members
                 staticTranslator = TsClassToKt(typeMapper, KtClassKind.COMPANION_OBJECT, listOf(), NOT_OVERRIDE, NOT_OVERRIDE, hasMembersOpenModifier = false)
@@ -80,7 +80,7 @@ abstract class TsClassifierToKt(
     open fun needsNoImpl(node: MethodDeclaration): Boolean = true
 
     override fun visitPropertyDeclaration(node: PropertyDeclaration) {
-        val declarationName = node.propertyName!!
+        val declarationName = node.propertyName
 
         val name = declarationName.asString() ?: return
 
@@ -116,7 +116,7 @@ abstract class TsClassifierToKt(
     }
 
     override fun visitMethodDeclaration(node: MethodDeclaration) {
-        val declarationName = node.propertyName!!
+        val declarationName = node.propertyName
         val name = declarationName.asString() ?: return
         val isOverride = isOverride(node)
 

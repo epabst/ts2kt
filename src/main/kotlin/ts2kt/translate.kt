@@ -41,6 +41,7 @@ private fun getScriptSnapshotFromFile(path: String): IScriptSnapshot {
     var scriptSnapshot  = file2scriptSnapshotCache[path]
 
     if (scriptSnapshot == null) {
+        @Suppress("RemoveRedundantCallsOfConversionMethods") // needed to avoid "substring is not a function"
         scriptSnapshot = fromString(fs.readFileSync(path).toString())
         file2scriptSnapshotCache[path] = scriptSnapshot
     }
@@ -104,7 +105,7 @@ fun translate(srcPath: String, basePackageName: String, declareModifierIsOptiona
             val heritages = heritageClauses ?: return false
 
             for (heritage in heritages.arr) {
-                val types = heritage.types ?: continue
+                val types = heritage.types
 
                 for (typeNode in types.arr) {
                     val type = typechecker.getTypeAtLocation(typeNode) ?: continue
@@ -113,7 +114,7 @@ fun translate(srcPath: String, basePackageName: String, declareModifierIsOptiona
 
                     if (f(typechecker, type, nodeName)) return true
 
-                    if ((type.symbol?.declarations?.get(0) as? ClassDeclaration)?.forEachBaseTypeNode() ?: false) return true
+                    if ((type.symbol?.declarations?.get(0).unsafeCast<ClassDeclaration?>())?.forEachBaseTypeNode() == true) return true
                 }
             }
 
@@ -135,7 +136,7 @@ fun translate(srcPath: String, basePackageName: String, declareModifierIsOptiona
         // this as Any
 //        if (this == null) return false
 
-        return getBaseTypes()?.any { it.isSubtypeOf(other) } ?: false
+        return getBaseTypes().any { it.isSubtypeOf(other) }
     }
 
     fun TypeChecker.getTypeOfSymbol(symbol: Symbol) : Type =
@@ -169,7 +170,7 @@ fun translate(srcPath: String, basePackageName: String, declareModifierIsOptiona
                 // TODO add test
                 if (it.kind === SyntaxKind.PropertyDeclaration || it.kind === SyntaxKind.PropertySignature) return@any false
 
-                val signature: Signature = when (it.kind as Any) {
+                val signature: Signature = when (it.kind) {
                     SyntaxKind.MethodSignature,
                     SyntaxKind.MethodDeclaration -> typechecker.getSignatureFromDeclaration(it.cast<SignatureDeclaration>())
                     else -> {
@@ -213,8 +214,8 @@ fun translate(srcPath: String, basePackageName: String, declareModifierIsOptiona
             typeChecker = typeChecker,
             typeMapper = typeMapper,
             defaultAnnotations = DEFAULT_ANNOTATION,
-            isOwnDeclaration = {
-                val definitions = languageService.getDefinitionAtPosition(normalizeSrcPath, it.end)
+            isOwnDeclaration = { node ->
+                val definitions = languageService.getDefinitionAtPosition(normalizeSrcPath, node.end)
                 definitions.all { it.fileName == normalizeSrcPath }
             },
             isOverride = ::isOverride,

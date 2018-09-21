@@ -1,4 +1,4 @@
-@file:Suppress("INTERFACE_WITH_SUPERCLASS", "OVERRIDING_FINAL_MEMBER", "RETURN_TYPE_MISMATCH_ON_OVERRIDE", "CONFLICTING_OVERLOADS")
+@file:Suppress("INTERFACE_WITH_SUPERCLASS", "OVERRIDING_FINAL_MEMBER", "RETURN_TYPE_MISMATCH_ON_OVERRIDE", "CONFLICTING_OVERLOADS", "DEPRECATION", "DEPRECATION")
 @file:JsModule("typescript")
 package typescriptServices.ts
 
@@ -1569,7 +1569,7 @@ external interface TypeChecker {
     fun getTypeOfSymbolAtLocation(symbol: Symbol, node: Node): Type
     fun getDeclaredTypeOfSymbol(symbol: Symbol): Type
     fun getPropertiesOfType(type: Type): Array<Symbol>
-    fun getPropertyOfType(type: Type, propertyName: String): Symbol
+    fun getPropertyOfType(type: Type, propertyName: String): Symbol?
     fun getIndexInfoOfType(type: Type, kind: IndexKind): IndexInfo
     fun getSignaturesOfType(type: Type, kind: SignatureKind): Array<Signature>
     fun getIndexTypeOfType(type: Type, kind: IndexKind): Type
@@ -1587,7 +1587,7 @@ external interface TypeChecker {
     fun getShorthandAssignmentValueSymbol(location: Node): Symbol
     fun getExportSpecifierLocalTargetSymbol(location: ExportSpecifier): Symbol
     fun getPropertySymbolOfDestructuringAssignment(location: Identifier): Symbol
-    fun getTypeAtLocation(node: Node): Type
+    fun getTypeAtLocation(node: Node): Type?
     fun getTypeFromTypeNode(node: TypeNode): Type
     fun signatureToString(signature: Signature, enclosingDeclaration: Node? = definedExternally /* null */, flags: TypeFormatFlags? = definedExternally /* null */, kind: SignatureKind? = definedExternally /* null */): String
     fun typeToString(type: Type, enclosingDeclaration: Node? = definedExternally /* null */, flags: TypeFormatFlags? = definedExternally /* null */): String
