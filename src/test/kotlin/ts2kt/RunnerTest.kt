@@ -12,9 +12,22 @@ class RunnerTest {
     val UNVERIFIED_FILE_PREFIX = "// OUT:"
 
     @Test
+    fun testOne() {
+        translateToFileAndVerify("testData/class/override/anyMembers.d.ts", basePackage = "class.override")
+    }
+
+    @Test
     fun translateToFile() {
         translateDirectory("testData", emptyList())
         verifyDirectory("testData", emptyList())
+    }
+
+    fun translateToFileAndVerify(srcPath: String,
+                                 expectedPath: String = srcPath.replace(TS_EXT, KT_EXT),
+                                 basePackage: String? = null) {
+        val outPath = srcPath.replace(TS_EXT, KT_EXT) + ".out"
+        translateToFile(srcPath, outPath, basePackage)
+        verifyFile(srcPath, expectedPath)
     }
 
     private fun translateDirectory(srcDir: String, fqNames: List<String>) {
