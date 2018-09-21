@@ -31,14 +31,11 @@ private val KOTLIN_FILE_EXT = ".kt"
 // Used from tests
 @Suppress("unused")
 fun translateToFile(srcPath: String, outPath: String) {
-    val srcName = path.basename(srcPath, TYPESCRIPT_DEFINITION_FILE_EXT)
-    val packageParts = translate(srcPath, srcName)
+    val fileContentByPath = translateToFileContentByPath(listOf(srcPath))
 
     val out =
-            if (packageParts.isNotEmpty()) {
-                packageParts.joinToString("\n// ${"-".repeat(90)}\n") {
-                            it.stringify(packagePartPrefix = srcName)
-                        }
+            if (fileContentByPath.isNotEmpty()) {
+                fileContentByPath.values.joinToString("\n// ${"-".repeat(90)}\n")
             }
             else "// NO DECLARATIONS"
 
@@ -66,15 +63,12 @@ private fun mkDirs(dirs: String): Boolean {
     return true
 }
 
-// TODO share more code between [translateToDir] and [translateToFile]
-fun translateToDir(
+private fun translateToFileContentByPath(
         sources: List<String>,
-        outDir: String, basePackage: String? = null,
-        libraries: List<String> = emptyList(),
-        declareModifierIsOptional: Boolean = false
-) {
-    var isOutDirExists = false
+        basePackage: String? = null,
+        declareModifierIsOptional: Boolean = false): Map<String,String> {
 
+    val result = mutableMapOf<String,String>()
     for (src in sources) {
         console.log("Converting $src")
         val baseSrcName = path.basename(src, TYPESCRIPT_DEFINITION_FILE_EXT)
@@ -85,29 +79,24 @@ fun translateToDir(
             continue
         }
 
-        console.log("Save declarations:")
-
         packageParts.forEach {
-            val outFileName = baseSrcName + (if (it.fqName.isNotEmpty()) "." else "") + it.fqName.joinToString(".") + KOTLIN_FILE_EXT
-            val outFilePath = outDir + "/" + outFileName
-
-            console.log("\t$outFilePath")
+            val outFileName = (listOf(baseSrcName) + it.fqName).joinToString(".") + KOTLIN_FILE_EXT
 
             val imports = listOf(
-                "kotlin.js.*",
-                "kotlin.js.Json",
-                "org.khronos.webgl.*",
-                "org.w3c.dom.*",
-                "org.w3c.dom.events.*",
-                "org.w3c.dom.parsing.*",
-                "org.w3c.dom.svg.*",
-                "org.w3c.dom.url.*",
-                "org.w3c.fetch.*",
-                "org.w3c.files.*",
-                "org.w3c.notifications.*",
-                "org.w3c.performance.*",
-                "org.w3c.workers.*",
-                "org.w3c.xhr.*")
+                    "kotlin.js.*",
+                    "kotlin.js.Json",
+                    "org.khronos.webgl.*",
+                    "org.w3c.dom.*",
+                    "org.w3c.dom.events.*",
+                    "org.w3c.dom.parsing.*",
+                    "org.w3c.dom.svg.*",
+                    "org.w3c.dom.url.*",
+                    "org.w3c.fetch.*",
+                    "org.w3c.files.*",
+                    "org.w3c.notifications.*",
+                    "org.w3c.performance.*",
+                    "org.w3c.workers.*",
+                    "org.w3c.xhr.*")
 
             val suppressedDiagnostics = listOf(
                     "INTERFACE_WITH_SUPERCLASS",
@@ -117,11 +106,29 @@ fun translateToDir(
                     "EXTERNAL_DELEGATION",
                     "NESTED_CLASS_IN_EXTERNAL_INTERFACE")
 
-            if (!isOutDirExists) {
-                isOutDirExists = fs.existsSync(outDir) || mkDirs(outDir)
-            }
-            fs.writeFileSync(outFilePath, it.stringify(packagePartPrefix = basePackage, topLevel = true, additionalImports = imports, suppressedDiagnostics = suppressedDiagnostics))
+            result.put(outFileName, it.stringify(packagePartPrefix = basePackage, topLevel = true, additionalImports = imports, suppressedDiagnostics = suppressedDiagnostics))
         }
+    }
+    return result
+}
+
+fun translateToDir(
+        sources: List<String>,
+        outDir: String, basePackage: String? = null,
+        libraries: List<String> = emptyList(),
+        declareModifierIsOptional: Boolean = false
+) {
+    val fileContentByPath = translateToFileContentByPath(sources, basePackage, declareModifierIsOptional)
+
+    console.log("Save declarations:")
+
+    fileContentByPath.forEach { (relativeOutPath, content) ->
+        val outFilePath = outDir + "/" + relativeOutPath
+        console.log("\t$outFilePath")
+
+        val fileDir = path.dirname(outFilePath)
+        if (!fs.existsSync(fileDir)) mkDirs(fileDir)
+        fs.writeFileSync(outFilePath, content)
     }
 }
 
