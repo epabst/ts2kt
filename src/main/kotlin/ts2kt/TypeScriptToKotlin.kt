@@ -209,7 +209,7 @@ class TypeScriptToKotlin(
         val newQualifier = this.qualifier + ownName
 
         val packageSymbol: Symbol? = typeChecker.getSymbolResolvingAliases(node.name.unsafeCast<Node>())
-        fun createPackagePart() = KtPackagePartBuilder(packageSymbol, currentPackagePartBuilder, ownName).also {
+        fun createPackagePart() = KtPackagePartBuilder(packageSymbol, currentPackagePartBuilder, ownName, currentPackagePartBuilder.basePackageName).also {
             currentPackagePartBuilder.nestedPackages += it
             context.packageParts += it
         }

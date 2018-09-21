@@ -197,7 +197,7 @@ fun translate(srcPath: String, basePackageName: String, declareModifierIsOptiona
     ObjectTypeToKotlinTypeMapperImpl.reset()
 
     val typeChecker = languageService.getProgram().getTypeChecker()
-    val rootBuilder = KtPackagePartBuilder(null, null, "")
+    val rootBuilder = KtPackagePartBuilder(null, null, "", basePackageName = basePackageName)
     val context = ConverterContext()
     context.packageParts += rootBuilder
 

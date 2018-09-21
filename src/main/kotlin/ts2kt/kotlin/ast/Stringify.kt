@@ -246,7 +246,7 @@ class Stringify(
             }
         }
 
-        val packageNameParts = (packagePartPrefix?.let(::listOf) ?: emptyList()) + packagePart.fqName
+        val packageNameParts = (packagePartPrefix?.split(".") ?: emptyList()) + packagePart.fqName
 
         if (packageNameParts.isNotEmpty()) {
             out.println("package " + packageNameParts.joinToString(".", transform = { it.sanitize().escapeIfNeed() }))
@@ -351,6 +351,9 @@ class Stringify(
                 if (isNullable) out.print(")")
             }
             else {
+                if (qualifiedName.qualifier != null) {
+                    out.print(packagePartPrefix?.split(".")?.map { it.sanitize().escapeIfNeed() }?.joinToString(".")?.let { "$it." } ?: "")
+                }
                 out.print(qualifiedName.asString())
 
                 typeArgs.acceptForEach(this@Stringify, ", ", startWithIfNotEmpty = "<", endWithIfNotEmpty = ">")

@@ -13,7 +13,8 @@ class KtPackagePartBuilder(
         val id: Symbol?,
         var parent: KtPackagePartBuilder?,
         // TODO should it be KtQualifiedName?
-        val ownName: String
+        val ownName: String,
+        val basePackageName: String
 ) {
     val members: MutableList<KtMember> = mutableListOf()
     val annotations: MutableList<KtAnnotation> = mutableListOf()

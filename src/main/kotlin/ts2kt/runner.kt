@@ -26,16 +26,21 @@ import ts2kt.utils.diagnosticLevel
 import ts2kt.utils.reportUnsupportedKinds
 import ts2kt.utils.trackUnsupportedKinds
 
-private val KOTLIN_FILE_EXT = ".kt"
+private val KOTLIN_DEFINITION_FILE_EXT = ".d.kt"
+internal val FILE_DELIMITER = "\n// ${"-".repeat(90)}\n"
 
 // Used from tests
 @Suppress("unused")
-fun translateToFile(srcPath: String, outPath: String) {
-    val fileContentByPath = translateToFileContentByPath(listOf(srcPath))
+fun translateToFile(srcPath: String, outPath: String, basePackage: String? = null) {
+    val fileContentByPath = translateToFileContentByPath(listOf(srcPath), basePackage)
 
     val out =
-            if (fileContentByPath.isNotEmpty()) {
-                fileContentByPath.values.joinToString("\n// ${"-".repeat(90)}\n")
+            if (fileContentByPath.size == 1) {
+                fileContentByPath.values.first()
+            } else if (fileContentByPath.isNotEmpty()) {
+                fileContentByPath
+                        .map { (relativeOutPath, content) -> "// File: $relativeOutPath\n$content" }
+                        .joinToString(FILE_DELIMITER)
             }
             else "// NO DECLARATIONS"
 
@@ -80,7 +85,8 @@ private fun translateToFileContentByPath(
         }
 
         packageParts.forEach {
-            val outFileName = (listOf(baseSrcName) + it.fqName).joinToString(".") + KOTLIN_FILE_EXT
+            val outFileName = (listOf(baseSrcName) + it.fqName).joinToString(".") + KOTLIN_DEFINITION_FILE_EXT
+            val outFilePath = (it.fqName + outFileName).joinToString("/")
 
             val imports = listOf(
                     "kotlin.js.*",
@@ -106,7 +112,7 @@ private fun translateToFileContentByPath(
                     "EXTERNAL_DELEGATION",
                     "NESTED_CLASS_IN_EXTERNAL_INTERFACE")
 
-            result.put(outFileName, it.stringify(packagePartPrefix = basePackage, topLevel = true, additionalImports = imports, suppressedDiagnostics = suppressedDiagnostics))
+            result.put(outFilePath, it.stringify(packagePartPrefix = basePackage, topLevel = true, additionalImports = imports, suppressedDiagnostics = suppressedDiagnostics))
         }
     }
     return result
