@@ -7,7 +7,7 @@ interface This {
     when: string;
     typealias: number;
     typeof: number;
-    in(object: Foo);
+    in(object: This);
 }
 declare class is<interface> {
     as: number;
@@ -21,7 +21,18 @@ declare module "This" {
     var bbb: when.$foo;
 }
 
+declare module $boo {
+    export interface typealias
+}
+
+declare module bar {
+    declare module string {
+        export interface interface
+    }
+}
+
 declare module when {
+    export interface $tring;
     export var $: boolean;
     export function package(as: bar.string.interface, b: $boo.typealias): $tring;
 }

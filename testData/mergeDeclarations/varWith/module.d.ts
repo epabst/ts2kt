@@ -13,6 +13,9 @@ declare module _ {
         argsObject: boolean;
     }
 
+    interface LoDashWrapper<T> {
+    }
+
     interface LoDashArrayWrapper<T> {
         difference(...others: Array<T>[]): LoDashArrayWrapper<T>;
         difference(...others: List<T>[]): LoDashArrayWrapper<T>;

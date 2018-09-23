@@ -1,8 +1,8 @@
-declare class Foo {
+declare class SimpleFoo {
     bar(): number;
 }
 
-declare module Foo {
+declare module SimpleFoo {
     export function baz(a);
     export function bar(): number;
 }

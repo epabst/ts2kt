@@ -1,5 +1,5 @@
-interface Foo {}
+interface InterfaceInTypeLiteral {}
 
 declare var foo : {
-    new(): Foo;
+    new(): InterfaceInTypeLiteral;
 };

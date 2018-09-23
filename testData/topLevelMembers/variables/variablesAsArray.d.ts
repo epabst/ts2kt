@@ -1,3 +1,4 @@
+declare interface Foo;
 declare var varAsArrayOfAny: any[];
 declare var varAsArrayOfNumber: number[];
 declare var varAsGenericArrayOfNumber: Array<number>;

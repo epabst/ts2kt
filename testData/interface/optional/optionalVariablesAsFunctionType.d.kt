@@ -17,6 +17,6 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external interface Foo {
+external interface FooWithOptionalVariablesAsFunctionType {
     var bar: ((b: Boolean, baz: Any) -> Boolean)? get() = definedExternally; set(value) = definedExternally
 }

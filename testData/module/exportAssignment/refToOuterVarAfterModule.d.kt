@@ -17,6 +17,8 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
+external interface JQueryAjaxSettings
+external interface JQueryXHR
 external interface JQueryStatic {
     fun ajax(settings: JQueryAjaxSettings): JQueryXHR
     fun ajax(url: String, settings: JQueryAjaxSettings? = definedExternally /* null */): JQueryXHR

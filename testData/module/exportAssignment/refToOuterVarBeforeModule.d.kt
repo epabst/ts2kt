@@ -17,6 +17,7 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
+external class SinonStub
 external interface SinonStatic {
     var createStubInstance: (constructor: Any) -> SinonStub
     var format: (obj: Any) -> String

@@ -1,3 +1,4 @@
+interface Bar;
 interface Foo {
     methodWithOutArgs?();
     methodWithString?(s: string): string;

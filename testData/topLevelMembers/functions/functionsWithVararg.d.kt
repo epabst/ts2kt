@@ -17,6 +17,7 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
+external interface Foo
 external fun withVarargWithoutTypeAnnotation(vararg a: Any): Unit = definedExternally
 external fun withVarargAny(vararg a: Any): Any = definedExternally
 external fun withVarargNumber(vararg s: Number): String = definedExternally

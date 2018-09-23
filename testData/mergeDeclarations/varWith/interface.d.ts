@@ -18,6 +18,8 @@ declare module AceAjax {
     }
     export var KeyBinding: Foo;
 
+    export interface Editor
+
     export interface Foo {
         foo(editor: Editor): boolean;
     }

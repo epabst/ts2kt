@@ -17,6 +17,7 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
+external interface Bar
 external interface Foo {
     val methodWithOutArgs: (() -> Unit)? get() = definedExternally
     val methodWithString: ((s: String) -> String)? get() = definedExternally

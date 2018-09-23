@@ -17,10 +17,11 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external interface Foo<T : Bar> {
+external interface Baz
+external interface FooWithConstraint<T : Bar> {
     var varT: T
     fun withoutArgumentsReturnsT(): T
     fun withOneT(a: T): T
     fun <B : Baz> returnsB(a: Any): B
-    fun <A : T, B : B> withManyArguments(a: A, b: B): T
+    fun <A : T, B : Baz> withManyArguments(a: A, b: B): T
 }

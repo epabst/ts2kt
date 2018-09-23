@@ -17,7 +17,7 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external interface Foo {
+external interface FooIndex {
     @nativeGetter
     operator fun get(n: Number): Bar?
     @nativeSetter

@@ -17,7 +17,10 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external open class Component<P, S> : Bar, Foo, ComponentLifecycle<P, S> {
+external open class Bar
+external interface Foo
+external interface ComponentLifecycle<P,S>
+external open class ClassBeforeInterfaceComponent<P, S> : Bar, Foo, ComponentLifecycle<P, S> {
     open fun boo(p: P, s: S): Unit = definedExternally
     var foo: String
     fun bar(): Number

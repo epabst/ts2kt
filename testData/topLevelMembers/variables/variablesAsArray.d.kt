@@ -17,6 +17,7 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
+external interface Foo
 external var varAsArrayOfAny: Array<Any> = definedExternally
 external var varAsArrayOfNumber: Array<Number> = definedExternally
 external var varAsGenericArrayOfNumber: Array<Number> = definedExternally

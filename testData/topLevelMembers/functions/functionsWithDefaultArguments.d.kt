@@ -17,6 +17,7 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
+external interface JQueryAjaxSettings
 external fun withOneAny(a: Any = definedExternally /* 0 */): Any = definedExternally
 external fun withOneString(s: String = definedExternally /* "foobar" */): String = definedExternally
 external fun withOneStringAndOptional(s: String = definedExternally /* "something" */, settings: JQueryAjaxSettings? = definedExternally /* null */): Boolean = definedExternally

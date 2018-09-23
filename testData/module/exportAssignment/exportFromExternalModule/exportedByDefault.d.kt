@@ -19,9 +19,9 @@ import org.w3c.xhr.*
 
 external fun foo(): String = definedExternally
 external var bar: Number = definedExternally
-external interface IBaz {
+external interface InterfaceExportedByDefault {
     fun doSomething()
 }
-external open class Klass {
+external open class ClassExportedByDefault {
     open fun method(s: Any): String = definedExternally
 }

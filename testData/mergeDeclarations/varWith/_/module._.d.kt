@@ -27,6 +27,7 @@ external interface Support {
     var argsClass: Boolean
     var argsObject: Boolean
 }
+external interface LoDashWrapper<T>
 external interface LoDashArrayWrapper<T> {
     fun difference(vararg others: Array<T>): mergeDeclarations.varWith.`_`.LoDashArrayWrapper<T>
     fun difference(vararg others: List<T>): mergeDeclarations.varWith.`_`.LoDashArrayWrapper<T>

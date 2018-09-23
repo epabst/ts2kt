@@ -17,7 +17,7 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external interface Foo {
+external interface FooWithOptionalVariables {
     var varAsAny: Any? get() = definedExternally; set(value) = definedExternally
     var varAsNumber: Number? get() = definedExternally; set(value) = definedExternally
     var varAsBoolean: Boolean? get() = definedExternally; set(value) = definedExternally

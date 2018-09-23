@@ -19,11 +19,11 @@ import org.w3c.xhr.*
 
 external fun foo(a: Nothing?): Nothing? = definedExternally
 external fun bar(a: Nothing?): Nothing? = definedExternally
-external interface I {
+external interface InterfaceWithUndefinedAndNullTypes {
     fun foo(a: Nothing?): Nothing?
     fun bar(a: Nothing?): Nothing?
 }
-external open class C {
+external open class ClassWithUndefinedAndNullTypes {
     open fun foo(a: Nothing?): Nothing? = definedExternally
     open fun bar(a: Nothing?): Nothing? = definedExternally
 }

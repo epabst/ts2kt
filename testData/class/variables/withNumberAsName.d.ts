@@ -1,6 +1,6 @@
 declare interface IBar {}
 
-declare class Foo {
+declare class FooWithNumberAsName {
     200?: string;
     300: number;
     400?: IBar;

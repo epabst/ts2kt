@@ -17,6 +17,6 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external interface Foo {
+external interface OptionalFunctionalFoo {
     val foo: ((f: ((n: Number, s: String) -> String)? /*= null*/) -> Boolean)? get() = definedExternally
 }

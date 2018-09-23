@@ -1,21 +1,21 @@
 declare module Foo {
     module Bar {
-        export interface A {
+        export interface InterfaceWithNonExportDeclarations {
             baz();
         }
-        class B {
+        class ClassWithNonExportDeclarations {
             boo();
         }
-        var c: number;
-        export function d(a: boolean, b, c: SomeType);
+        var varWithNonExportDeclaration: number;
+        export function d(a: boolean, b, c: InterfaceWithNonExportDeclarations);
     }
-    interface A {
+    interface InterfaceWithNonExportDeclarations {
         baz();
     }
-    class B {
+    class ClassWithNonExportDeclarations {
         boo();
     }
-    var c: number;
-    function d(a: boolean, b, c: SomeType);
+    var varWithNonExportDeclaration: number;
+    function d(a: boolean, b, c: InterfaceWithNonExportDeclarations);
 }
 

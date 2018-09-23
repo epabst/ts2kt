@@ -28,6 +28,7 @@ external interface KeyBinding {
     companion object : Foo by definedExternally {
     }
 }
+external interface Editor
 external interface Foo {
     fun foo(editor: Editor): Boolean
 }

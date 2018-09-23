@@ -1,4 +1,8 @@
 // based on browserify.d.ts
+namespace NodeJS {
+    interface EventEmitter;
+}
+
 interface BrowserifyObject extends NodeJS.EventEmitter {
 	add(file: string): BrowserifyObject;
 	require(file: string): BrowserifyObject;

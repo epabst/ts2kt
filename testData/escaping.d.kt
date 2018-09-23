@@ -23,7 +23,7 @@ external interface This {
     var `when`: String
     var `typealias`: Number
     var `typeof`: Number
-    fun `in`(`object`: Foo)
+    fun `in`(`object`: This)
     companion object {
         var `$foo`: Boolean = definedExternally
         fun `bar$`(`ba$z`: Number): Unit = definedExternally

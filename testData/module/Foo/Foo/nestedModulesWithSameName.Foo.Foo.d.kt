@@ -17,7 +17,7 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external open class B {
-    open fun boo(): module.Foo.A = definedExternally
+external open class ClassInSameModuleName {
+    open fun boo(): module.Foo.InterfaceInSameModuleName = definedExternally
 }
 external var c: Number = definedExternally

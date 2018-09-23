@@ -17,11 +17,11 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external interface A {
+external interface InterfaceWithNonExportDeclarations {
     fun baz()
 }
-external open class B {
+external open class ClassWithNonExportDeclarations {
     open fun boo(): Unit = definedExternally
 }
-external var c: Number = definedExternally
-external fun d(a: Boolean, b: Any, c: SomeType): Unit = definedExternally
+external var varWithNonExportDeclaration: Number = definedExternally
+external fun d(a: Boolean, b: Any, c: InterfaceWithNonExportDeclarations): Unit = definedExternally

@@ -17,18 +17,18 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external open class Foo
-external var fooKey: dynamic /* String | Number | Foo */ = definedExternally
+external open class FooForAlias
+external var fooKey: dynamic /* String | Number | FooForAlias */ = definedExternally
 external fun barKey(a: String): Unit = definedExternally
 external fun barKey(a: Number): Unit = definedExternally
-external fun barKey(a: Foo): Unit = definedExternally
-external fun barList(a: List<dynamic /* String | Number | Foo */>): Unit = definedExternally
-external fun barArray(a: Array<dynamic /* String | Number | Foo */>): Unit = definedExternally
+external fun barKey(a: FooForAlias): Unit = definedExternally
+external fun barList(a: List<dynamic /* String | Number | FooForAlias */>): Unit = definedExternally
+external fun barArray(a: Array<dynamic /* String | Number | FooForAlias */>): Unit = definedExternally
 external interface Parent {
     @nativeInvoke
-    operator fun invoke(vararg children: String): Foo
+    operator fun invoke(vararg children: String): FooForAlias
     @nativeInvoke
-    operator fun invoke(vararg children: Number): Foo
+    operator fun invoke(vararg children: Number): FooForAlias
     @nativeInvoke
-    operator fun invoke(vararg children: Foo): Foo
+    operator fun invoke(vararg children: FooForAlias): FooForAlias
 }

@@ -17,18 +17,18 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external interface Map<K, V>
-external interface List<T>
-external var fooMap: Map<String, List<Number>> = definedExternally
-external fun mapKey(a: Map<Number, List<String>>): Unit = definedExternally
-external var fooStringOrMap: dynamic /* String | Map<String, List<Number>> */ = definedExternally
+external interface Map1<K, V>
+external interface List1<T>
+external var fooMap: Map1<String, List1<Number>> = definedExternally
+external fun mapKey(a: Map1<Number, List1<String>>): Unit = definedExternally
+external var fooStringOrMap: dynamic /* String | Map1<String, List1<Number>> */ = definedExternally
 external fun stringOrMapKey(a: String): Unit = definedExternally
-external fun stringOrMapKey(a: Map<Number, List<String>>): Unit = definedExternally
-external var listOfStringOrNumber: dynamic /* String | List<dynamic /* String | Number */> */ = definedExternally
-external fun listOfNumberOrString(a: List<dynamic /* Number | String */>): Unit = definedExternally
-external var headers: Map<String, List<String>> = definedExternally
-external fun getHeaders(): Map<String, List<String>> = definedExternally
-external fun addHeaders(headers: Map<String, List<String>>): Unit = definedExternally
+external fun stringOrMapKey(a: Map1<Number, List1<String>>): Unit = definedExternally
+external var listOfStringOrNumber: dynamic /* String | List1<dynamic /* String | Number */> */ = definedExternally
+external fun listOfNumberOrString(a: List1<dynamic /* Number | String */>): Unit = definedExternally
+external var headers: Map1<String, List1<String>> = definedExternally
+external fun getHeaders(): Map1<String, List1<String>> = definedExternally
+external fun addHeaders(headers: Map1<String, List1<String>>): Unit = definedExternally
 external var someRef: dynamic /* String | (instance: T) -> Any */ = definedExternally
 external fun addRef(ref: String): Unit = definedExternally
 external fun addRef(ref: (instance: T) -> Any): Unit = definedExternally

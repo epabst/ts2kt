@@ -1,4 +1,5 @@
 // based on sinon.d.ts
+class SinonStub;
 interface SinonStatic {
     createStubInstance: (constructor: any) => SinonStub;
 	format: (obj: any) => string;

@@ -1,4 +1,5 @@
-interface Foo<T> {
+interface Bar;
+interface FooOptionalMethods<T> {
     methodWithOutArgs?();
     methodWithString?<A>(s: A): T;
     methodWithManyArgs?<A extends T, B>(n: A, settings: Bar): B;

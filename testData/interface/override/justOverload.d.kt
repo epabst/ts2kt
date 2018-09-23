@@ -17,9 +17,9 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external interface Foo {
+external interface FooWithOverload {
     fun bar(a: Number)
 }
-external interface Boo : Foo {
+external interface BooWithOverload : FooWithOverload {
     fun bar(a: String)
 }

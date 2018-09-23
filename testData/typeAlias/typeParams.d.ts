@@ -1,10 +1,10 @@
-interface Map<K, V> {
+interface Map1<K, V> {
 }
-interface List<T> {
+interface List1<T> {
 }
 
-type Values<V> = List<V>;
-type MultiMap<K,V> = Map<K,Values<V>>;
+type Values<V> = List1<V>;
+type MultiMap<K,V> = Map1<K,Values<V>>;
 type MyHeaders = MultiMap<String,String>
 type Ref<T> = string | ((instance: T) => any);
 
@@ -16,9 +16,9 @@ declare var fooStringOrMap: string | MultiMap<string,number>;
 
 declare function stringOrMapKey(a: string | MultiMap<number,String>);
 
-declare var listOfStringOrNumber: string | List<string | number>;
+declare var listOfStringOrNumber: string | List1<string | number>;
 
-declare function listOfNumberOrString(a: List<number | String>);
+declare function listOfNumberOrString(a: List1<number | String>);
 
 declare var headers: MyHeaders;
 

@@ -17,7 +17,7 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external open class Foo {
+external open class SimpleFoo {
     open fun bar(): Number = definedExternally
     companion object {
         fun baz(a: Any): Unit = definedExternally

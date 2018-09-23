@@ -1,4 +1,4 @@
-interface Foo {
+interface FooWithOptionalVariables {
     varAsAny?: any;
     varAsNumber?: number;
     varAsBoolean?: boolean;

@@ -1,3 +1,4 @@
+interface Bar;
 interface Foo {
     ();
     (n: number): boolean;

@@ -17,7 +17,7 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external interface A {
+external interface InterfaceInSameModuleName {
     fun baz()
 }
-external fun d(a: A, b: Any, c: module.Foo.Foo.B): Unit = definedExternally
+external fun d(a: InterfaceInSameModuleName, b: Any, c: module.Foo.Foo.ClassInSameModuleName): Unit = definedExternally

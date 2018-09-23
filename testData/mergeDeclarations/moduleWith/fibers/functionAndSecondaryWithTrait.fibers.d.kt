@@ -18,4 +18,10 @@ import org.w3c.workers.*
 import org.w3c.xhr.*
 
 @JsModule("fibers")
+external interface Fiber {
+    var reset: () -> Any
+    var run: (param: Any? /*= null*/) -> Any
+    var throwInto: (ex: Any) -> Any
+}
+
 external fun Fiber(fn: Function<*>): Fiber = definedExternally

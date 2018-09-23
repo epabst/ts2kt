@@ -17,6 +17,7 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
+external interface `$tring`
 external var `$`: Boolean = definedExternally
 external fun `package`(`as`: bar.string.`interface`, b: `$boo`.`typealias`): `$tring` = definedExternally
 external interface Promise<T>

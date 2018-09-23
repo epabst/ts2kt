@@ -2,11 +2,11 @@ declare module "Boo" {
 	function foo(): string;
 	var bar: number;
 
-    interface IBaz {
+    interface InterfaceExportedByDefault {
         doSomething();
     }
 
-    class Klass {
+    class ClassExportedByDefault {
         method(s): string;
     }
 }

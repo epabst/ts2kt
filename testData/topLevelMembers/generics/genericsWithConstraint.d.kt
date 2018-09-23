@@ -17,6 +17,8 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
+external interface Foo
+external interface Bar
 external fun <T : Foo> extendsFooT(a: T): T = definedExternally
 external fun <T : Any> extendsAny(a: T): T = definedExternally
 external fun <A : Bar, B : A> withManyExtends(a: A, b: B): Boolean = definedExternally

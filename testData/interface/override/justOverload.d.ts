@@ -1,7 +1,7 @@
-interface Foo {
+interface FooWithOverload {
     bar(a:number);
 }
 
-interface Boo extends Foo {
+interface BooWithOverload extends FooWithOverload {
     bar(a: string);
 }
