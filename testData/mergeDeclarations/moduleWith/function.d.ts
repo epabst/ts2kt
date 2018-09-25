@@ -1,20 +1,18 @@
-// TODO: review
-
 // based on fibers.d.ts
-interface Fiber_ {
-    reset: () => any;
-    run: (param?: any) => any;
-    throwInto: (ex: any) => any;
-}
-
 declare module "fibers" {
 
-    function Fiber(fn: Function): Fiber_;
+	function fibers(callback: () => void): fibers.Fiber;
 
-    module Fiber {
-        export var current: Fiber;
-        export function yield(value?: any): any
-    }
+	namespace fibers {
+		export var poolSize: number;
+		export var fibersCreated: number;
+		export var current: fibers.Fiber;
+		export function yield(value: any): any;
 
-    export = Fiber;
+		export interface Fiber {
+			run(step?: number): any;
+		}
+	}
+
+	export = fibers;
 }

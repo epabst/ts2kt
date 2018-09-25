@@ -17,8 +17,5 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external interface Fiber_ {
-    var reset: () -> Any
-    var run: (param: Any? /*= null*/) -> Any
-    var throwInto: (ex: Any) -> Any
-}
+@JsModule("fibers")
+external fun fibers(callback: Function<*>): mergeDeclarations.moduleWith.fibers.Fiber = definedExternally

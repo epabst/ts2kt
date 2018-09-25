@@ -1,5 +1,5 @@
 @file:Suppress("INTERFACE_WITH_SUPERCLASS", "OVERRIDING_FINAL_MEMBER", "RETURN_TYPE_MISMATCH_ON_OVERRIDE", "CONFLICTING_OVERLOADS", "EXTERNAL_DELEGATION", "NESTED_CLASS_IN_EXTERNAL_INTERFACE")
-
+@file:JsQualifier("fibers")
 package mergeDeclarations.moduleWith.fibers
 
 import kotlin.js.*
@@ -18,4 +18,11 @@ import org.w3c.workers.*
 import org.w3c.xhr.*
 
 @JsModule("fibers")
-external fun Fiber(fn: Function<*>): Fiber_ = definedExternally
+external val poolSize: Number = definedExternally
+external val fibersCreated: Number = definedExternally
+external val current: Fiber = definedExternally
+external fun yield(value: Any? = definedExternally /* null */): Any = definedExternally
+
+external interface Fiber {
+    fun run(step: Number?): Any;
+}
