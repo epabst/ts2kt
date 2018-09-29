@@ -170,9 +170,16 @@ class Stringify(
 
     override fun visitVariable(variable: KtVariable) {
         with(variable) {
-            annotations.acceptForEach(this@Stringify)
+            val shouldCommentOut = annotations.contains(ANNOTATION_TO_COMMENT_OUT)
+            if (!shouldCommentOut) {
+                annotations.acceptForEach(this@Stringify)
+            }
 
             out.printIndent()
+
+            if (shouldCommentOut) {
+                out.print("// ")
+            }
 
             // TODO remove hack
             printExternalIfNeed()

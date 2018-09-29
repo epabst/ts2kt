@@ -83,6 +83,14 @@ abstract class TsClassifierToKt(
         val declarationName = node.propertyName!!
 
         val name = declarationName.asString() ?: return
+
+        val additionalAnnotations = if (name.matches("^[-\\d.].*")) {
+            console.warn("ts2kt: numeric literals are not supported by KotlinJS so they will be commented out")
+            listOf(ANNOTATION_TO_COMMENT_OUT)
+        } else {
+            emptyList()
+        }
+
         val varType = node.type?.let { typeMapper.mapType(it) } ?: KtType(ANY)
 
         val isOverride = isOverrideProperty(node)
@@ -93,7 +101,8 @@ abstract class TsClassifierToKt(
                 name,
                 type = varType.copy(isNullable = varType.isNullable || isNullable(node)),
                 isOverride = isOverride,
-                needsNoImpl = needsNoImpl(node)
+                needsNoImpl = needsNoImpl(node),
+                additionalAnnotations = additionalAnnotations
         )
     }
 

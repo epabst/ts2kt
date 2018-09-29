@@ -22,8 +22,10 @@ import ts2kt.escapeIfNeed
 
 val MODULE = KtName("module")
 private val FAKE = KtName("fake")
+private val COMMENT_OUT = KtName("commentOut")
 
 val FAKE_ANNOTATION = KtAnnotation(FAKE)
+val ANNOTATION_TO_COMMENT_OUT = KtAnnotation(COMMENT_OUT)
 val DEFAULT_FAKE_ANNOTATION = listOf(FAKE_ANNOTATION)
 
 internal val isNotAnnotatedAsFake = { node: KtAnnotated ->
