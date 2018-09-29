@@ -37,7 +37,8 @@ fun PropertyName.asString() = when (kind) {
         this.cast<Identifier>().unescapedText
     }
     SyntaxKind.NumericLiteral -> {
-        (this.cast<LiteralExpression>()).text
+        console.warn("ts2kt: numeric literals are not supported by KotlinJS so they will be omitted")
+        null
     }
     else -> {
         reportUnsupportedNode(this)
