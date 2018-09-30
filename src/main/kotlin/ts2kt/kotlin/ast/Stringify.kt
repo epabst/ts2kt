@@ -134,8 +134,10 @@ class Stringify(
 
             out.printIndent()
 
-            // TODO remove hack
-            printExternalIfNeed()
+            if (function.extendsType == null) {
+                // TODO remove hack
+                printExternalIfNeed()
+            }
 
             if (isOverride) {
                 out.print(OVERRIDE + " ")
@@ -181,8 +183,10 @@ class Stringify(
                 out.print("// ")
             }
 
-            // TODO remove hack
-            printExternalIfNeed()
+            if (variable.extendsType == null) {
+                // TODO remove hack
+                printExternalIfNeed()
+            }
 
             // TODO extract common logic between Variable and Function
             if (isOverride) {

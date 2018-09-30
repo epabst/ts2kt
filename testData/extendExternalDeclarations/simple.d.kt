@@ -2,6 +2,7 @@
 
 package extendExternalDeclarations
 
+import jquery.JQuery
 import kotlin.js.*
 import kotlin.js.Json
 import org.khronos.webgl.*
@@ -17,13 +18,12 @@ import org.w3c.performance.*
 import org.w3c.workers.*
 import org.w3c.xhr.*
 
-external fun JQuery.foo(): Unit = definedExternally
-external var JQuery.bar: Any get() = definedExternally; set(value) = definedExternally
-@nativeGetter
-external operator fun JQuery.get(prop: String): Number? = definedExternally
-@nativeSetter
-external operator fun JQuery.set(prop: String, value: Number): Unit = definedExternally
-external var JQuery.someField: String get() = definedExternally; set(value) = definedExternally
-external var JQuery.optionalField: Any? get() = definedExternally; set(value) = definedExternally
-@nativeInvoke
-external operator fun JQuery.invoke(resourceId: String, hash: Any? = definedExternally /* null */, callback: Function<*>? = definedExternally /* null */): Unit = definedExternally
+fun JQuery.foo(): Unit { this.asDynamic().foo() }
+var JQuery.bar: Any get() = this.asDynamic().bar; set(value) { this.asDynamic().bar = value }
+operator fun JQuery.get(prop: String): Number? = this.asDynamic().get(prop)
+operator fun JQuery.set(prop: String, value: Number) { this.asDynamic().set(prop, value) }
+var JQuery.someField: String get() = this.asDynamic().someField; set(value) { this.asDynamic().someField = value }
+var JQuery.optionalField: Any? get() = this.asDynamic().optionalField; set(value) { this.asDynamic().optionalField = value }
+operator fun JQuery.invoke(resourceId: String, hash: Any? = null, callback: Function<*>? = null): Unit {
+    return this.asDynamic().invoke(resourceId, hash, callback)
+}
