@@ -31,7 +31,7 @@ class KtPackagePartBuilder(
             }
             val qualifier = buildQualifier()
             if (qualifier.isNotEmpty()) {
-                allAnnotations += KtAnnotation(JS_QUALIFIER, listOf(KtArgument("\"$qualifier\"")))
+                allAnnotations += KtAnnotation(JS_QUALIFIER, listOf(KtArgument("\"${qualifier.replace("$","\\$")}\"")))
             }
         }
 
