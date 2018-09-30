@@ -40,7 +40,9 @@ declare module when {
 declare function When<T, U>(value: when.Promise<T>, transform: (val: T) => U): fun.Promise<U>;
 
 declare namespace when {
+    class interface {}
     interface Promise<T> {}
+    interface $foo {}
 }
 
 declare var _: __.___;

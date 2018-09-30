@@ -19,7 +19,7 @@ import org.w3c.xhr.*
 
 external interface `$tring`
 external var `$`: Boolean = definedExternally
-external fun `package`(`as`: bar.string.`interface`, b: _boo.`typealias`): `$tring` = definedExternally
+external fun `package`(`as`: bar.string.`interface`, b: _boo.`typealias`): `when`.`$tring` = definedExternally
 external open class `interface`
 external interface Promise<T>
 external interface `$foo`
