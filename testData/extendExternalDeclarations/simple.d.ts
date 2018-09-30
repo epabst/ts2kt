@@ -3,9 +3,6 @@
 interface JQuery {
     foo()
     bar
-}
-
-interface JQueryStatic {
     [prop: string]: number;
     someField: string;
     optionalField?: any;
